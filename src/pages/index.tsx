@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <title>Kyuuari Project</title>
         <meta
           name="description"
-          content="Explore the intersection of design and technology with The Kyuuari Project, a collection of web applications, UI/UX, and digital art projects. This showcase combines my passion for design and technology into fun and creative works"
+          content="Chester Cari (@Kyuuari) - Exploring the intersection of design and technology with The Kyuuari Project, a collection of web applications, UI/UX, and digital art projects. This showcase combines my passion for design and technology into fun and creative works"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
