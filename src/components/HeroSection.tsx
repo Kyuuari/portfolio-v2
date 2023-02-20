@@ -6,7 +6,7 @@ import { Mesh } from "three";
 
 export function HeroSection() {
   return (
-    <div id="home" className="h-screen w-screen">
+    <div id="home" className="h-screen">
       <Canvas className="bg-base-100">
         <Suspense fallback={<Loader />}>
           <>

@@ -2,7 +2,7 @@ import React from "react";
 
 const ServicesSection = () => {
   return (
-    <section className="h-auto w-screen">
+    <section className="h-auto">
       <div className="grid justify-center">
         <div className="grid grid-cols-1 gap-28 md:grid-cols-2">
           <div>

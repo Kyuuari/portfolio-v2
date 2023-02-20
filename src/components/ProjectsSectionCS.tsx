@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjectsSectionCS = () => {
   return (
-    <section id="projects" className="h-auto w-screen">
+    <section id="projects" className="h-auto">
       <div className="place-items-center">
         {/* <div className="place-content-start"> */}
         <h1 className="text-lg font-bold">Projects</h1>

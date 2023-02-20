@@ -7,7 +7,7 @@ import Link from "next/link";
 const MenuBar = () => {
   return (
     <div className="navbar fixed w-screen bg-opacity-0">
-      <div className="dropdown navbar-start dropdown-hover">
+      <div className="dropdown-hover dropdown navbar-start">
         <label tabIndex={0} className="btn-ghost btn normal-case">
           Menu
         </label>
@@ -16,13 +16,19 @@ const MenuBar = () => {
           className="dropdown-content menu rounded-box menu-compact w-52 bg-base-100 p-2 shadow"
         >
           <li>
-            <Link href={"#home"}>Home</Link>
+            <Link href={"#home"} scroll={false}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link href={"#about"}>About</Link>
+            <Link href={"#about"} scroll={false}>
+              About
+            </Link>
           </li>
           <li>
-            <Link href={"#projects"}>Projects</Link>
+            <Link href={"#projects"} scroll={false}>
+              Projects
+            </Link>
           </li>
         </ul>
       </div>

@@ -6,8 +6,8 @@
     html {
         @apply scroll-smooth;
     }
-        section {
-            padding: 2rem;
-        }
+    section {
+        padding: 2rem;
+    }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="h-auto w-screen">
+    <section id="about" className="h-auto">
       <div className="grid justify-center">
         <div className="">
           <h1 className="text-lg font-bold">About Me</h1>
