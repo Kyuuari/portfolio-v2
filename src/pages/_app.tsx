@@ -4,26 +4,28 @@ import "../styles/globals.css";
 import { themeChange } from "theme-change";
 import { useEffect } from "react";
 import { Origin, Overlay } from "../components/Overlay";
-import { initGA, logPageView } from "../lib/analytics";
-import { useRouter } from "next/router";
+import Script from "next/script";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  const router = useRouter();
   useEffect(() => {
     themeChange(false);
     // 👆 false parameter is required for react project
   }, []);
-
-  useEffect(() => {
-    initGA();
-  }, []);
-
-  useEffect(() => {
-    logPageView();
-  }, [router.asPath]);
-
   return (
     <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-T42DL494ED"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-T42DL494ED');
+        `}
+      </Script>
       <Overlay />
       <Origin />
       <Component {...pageProps} />
