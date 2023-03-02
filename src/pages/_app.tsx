@@ -5,8 +5,10 @@ import { themeChange } from "theme-change";
 import { useEffect } from "react";
 import { Origin, Overlay } from "../components/Overlay";
 import { initGA, logPageView } from "../lib/analytics";
+import { useRouter } from "next/router";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  const router = useRouter();
   useEffect(() => {
     themeChange(false);
     // 👆 false parameter is required for react project
@@ -15,6 +17,10 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   useEffect(() => {
     initGA();
   }, []);
+
+  useEffect(() => {
+    logPageView();
+  }, [router.asPath]);
 
   return (
     <>
