@@ -4,7 +4,6 @@ import "../styles/globals.css";
 import { themeChange } from "theme-change";
 import { useEffect } from "react";
 import { Origin, Overlay } from "../components/Overlay";
-import Script from "next/script";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   useEffect(() => {

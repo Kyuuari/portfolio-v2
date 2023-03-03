@@ -76,29 +76,29 @@ const particleColors = [
   "purple",
 ];
 
-function Particles({ size = 2000 }) {
-  const { width, height } = useThree((state) => state.viewport);
-  return (
-    <Points limit={size}>
-      <pointsMaterial size={0.05} vertexColors />
-      {Array.from({ length: size }).map((_, i) => (
-        <Point
-          key={i}
-          position={[
-            (0.5 - Math.random()) * width * 2,
-            0.5 * height + Math.random() ** 0.25 * height * -3,
-            (0.5 - Math.random()) * 25,
-          ]}
-          color={
-            particleColors[
-              Math.floor(Math.random() * (particleColors.length - 1))
-            ]
-          }
-        />
-      ))}
-    </Points>
-  );
-}
+// function Particles({ size = 2000 }) {
+//   const { width, height } = useThree((state) => state.viewport);
+//   return (
+//     <Points limit={size}>
+//       <pointsMaterial size={0.05} vertexColors />
+//       {Array.from({ length: size }).map((_, i) => (
+//         <Point
+//           key={i}
+//           position={[
+//             (0.5 - Math.random()) * width * 2,
+//             0.5 * height + Math.random() ** 0.25 * height * -3,
+//             (0.5 - Math.random()) * 25,
+//           ]}
+//           color={
+//             particleColors[
+//               Math.floor(Math.random() * (particleColors.length - 1))
+//             ]
+//           }
+//         />
+//       ))}
+//     </Points>
+//   );
+// }
 
 // function Caption({ children }) {
 //   const { width } = useThree((state) => state.viewport);

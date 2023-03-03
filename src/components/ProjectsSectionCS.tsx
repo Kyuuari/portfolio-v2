@@ -10,7 +10,7 @@ const ProjectsSectionCS = () => {
           <div className="place-items-center">
             <h1 className="text-2xl font-bold">Coming Soon</h1>
             <p className="max-w-[60ch]">
-              Exciting new projects are currently in the works! While I'm
+              Exciting new projects are currently in the works! While I&apos;m
               experimenting and pushing my creativity, my latest work is not
               quite ready to be showcased. In the meantime, feel free to check
               out my previous projects on my{" "}
@@ -21,7 +21,7 @@ const ProjectsSectionCS = () => {
               <a className="text-red-600" href="https://kyuuari.github.io/">
                 Portfolio-v1
               </a>
-              . Stay tuned for updates on what I'm working on next!
+              . Stay tuned for updates on what I&apos;m working on next!
             </p>
           </div>
           {/* </div> */}
