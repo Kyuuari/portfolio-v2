@@ -16,6 +16,17 @@ const Home: NextPage = () => {
           name="description"
           content="Chester Cari (@Kyuuari) - Exploring the intersection of design and technology with The Kyuuari Project, a collection of web applications, UI/UX, and digital art projects. This showcase combines my passion for design and technology into fun and creative works"
         />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Kyuuari Project" />
+        {/* <meta
+          property="og:description"
+          content="Chester Cari (@Kyuuari) - Exploring the intersection of design and technology with The Kyuuari Project, a collection of web applications, UI/UX, and digital art projects. This showcase combines my passion for design and technology into fun and creative works"
+        /> */}
+        {/* <meta property="og:image" content="https://example.com/image.jpg" />
+        <meta property="og:url" content="https://example.com" />
+        <meta property="og:site_name" content="Kyuuari Project" />
+        <meta property="og:locale" content="en_US" /> */}
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="absolute top-0 z-[-1] w-full">

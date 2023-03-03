@@ -24,7 +24,7 @@ const ThemeToggler = () => {
   }
 
   return (
-    <label className="swap-rotate swap p-3">
+    <label className="swap swap-rotate p-3">
       <input
         type="checkbox"
         onChange={() => toggleDarkMode()}

@@ -13,19 +13,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   }, []);
   return (
     <>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-T42DL494ED"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-T42DL494ED');
-        `}
-      </Script>
       <Overlay />
       <Origin />
       <Component {...pageProps} />

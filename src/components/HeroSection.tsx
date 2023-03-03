@@ -21,9 +21,6 @@ export function HeroSection() {
                     college who loves merging creativity with technology. I
                     specialize in designing and developing web and mobile
                     applications.
-                    {/* Hi, I'm a computer science student from Sheridan College who
-                    loves merging creativity with technology. I specialize in
-                    designing and developing web and mobile applications. */}
                   </p>
                 </div>
               </article>
