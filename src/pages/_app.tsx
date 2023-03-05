@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { themeChange } from "theme-change";
 import { useEffect } from "react";
 import { Origin, Overlay } from "../components/Overlay";
+import { Analytics } from "@vercel/analytics/react";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -15,6 +16,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       <Overlay />
       <Origin />
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 };
