@@ -6,7 +6,44 @@ import ServicesSection from "../components/ServicesSection";
 import ProjectsSection, { getStaticProps } from "../components/ProjectsSection";
 
 interface HomeProps {
-  data: any;
+  data: {
+    developerPosts: {
+      id: string;
+      projectInfo: {
+        id: string;
+        title: string;
+        subtitle: string;
+        slug: string;
+        images: {
+          url: string;
+        }[];
+      };
+    }[];
+    caseStudies: {
+      id: string;
+      projectInfo: {
+        id: string;
+        title: string;
+        subtitle: string;
+        slug: string;
+        images: {
+          url: string;
+        }[];
+      };
+    }[];
+    graphicDesigns: {
+      id: string;
+      projectInfo: {
+        id: string;
+        title: string;
+        subtitle: string;
+        slug: string;
+        images: {
+          url: string;
+        }[];
+      };
+    }[];
+  };
 }
 
 const Home: NextPage<HomeProps> = ({ data }) => {

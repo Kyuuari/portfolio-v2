@@ -1,16 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import client from "../lib/apolloClient";
 import { GetStaticProps } from "next";
 import { gql } from "@apollo/client";
+import Image from "next/image";
+
+// interface ProjectData {
+//   developerPosts: {
+//     id: string;
+//     projectInfo: {
+//       id: string;
+//       title: string;
+//       subtitle: string;
+//       slug: string;
+//       images: {
+//         url: string;
+//       }[];
+//     };
+//   }[];
+//   caseStudies: {
+//     id: string;
+//     projectInfo: {
+//       id: string;
+//       title: string;
+//       subtitle: string;
+//       slug: string;
+//       images: {
+//         url: string;
+//       }[];
+//     };
+//   }[];
+//   graphicDesigns: {
+//     id: string;
+//     projectInfo: {
+//       id: string;
+//       title: string;
+//       subtitle: string;
+//       slug: string;
+//       images: {
+//         url: string;
+//       }[];
+//     };
+//   }[];
+// }
+
+interface ImageData {
+  url: string;
+}
+
+interface ProjectInfo {
+  id: string;
+  title: string;
+  subtitle: string;
+  slug: string;
+  images: ImageData[];
+}
+
+interface PostData {
+  id: string;
+  projectInfo: ProjectInfo;
+}
 
 interface ProjectData {
-  developerPosts: {
-    id: string;
-  }[];
+  developerPosts: PostData[];
+  caseStudies: PostData[];
+  graphicDesigns: PostData[];
 }
 
 const ProjectsSection = ({ data }: { data: ProjectData }) => {
   console.log(data);
+  const [projectMenu, setprojectMenu] = useState("Dev");
+  // console.log(projectMenu);
   return (
     <section id="projects" className="h-auto">
       <div className="grid justify-center">
@@ -25,30 +84,43 @@ const ProjectsSection = ({ data }: { data: ProjectData }) => {
 
       <div className="- grid place-items-center py-2 md:place-items-end">
         <ul className="menu rounded-box menu-horizontal bg-base-100">
-          <li>
+          <li onClick={() => setprojectMenu("Dev")}>
             <a>Dev</a>
           </li>
-          <li>
+          <li onClick={() => setprojectMenu("Graphic Design")}>
             <a>Graphic Design</a>
           </li>
-          <li>
+          <li onClick={() => setprojectMenu("Case Studies")}>
             <a>Case Studies</a>
           </li>
         </ul>
       </div>
 
-      <div className="w-fill justify-center">
-        <div className="mx-auto columns-1 gap-3 space-y-3 bg-red-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4">
-          {/* {data.developerPosts.map((post) => (
-              <div key={post.id} className="card-body">
-                {post.id}
+      {projectMenu === "Dev" && (
+        <div className="w-fill justify-center">
+          <div className="mx-auto columns-1 gap-3 space-y-3 bg-red-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4">
+            {data.developerPosts.map((post) => (
+              <div key={post.id} className="break-inside-avoid">
+                {post.projectInfo.images && post.projectInfo.images[0]?.url && (
+                  <img src={post.projectInfo.images[0].url} alt={post.id} />
+                )}
               </div>
-            ))} */}
-          <div className="break-inside-avoid bg-gray-200">Post Name</div>
-          <div className="break-inside-avoid bg-gray-200">Post Name</div>
-          <div className="break-inside-avoid bg-gray-200">Post Name</div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      {projectMenu === "Graphic Design" && (
+        <div className="w-fill justify-center">
+          <div className="mx-auto columns-1 gap-3 space-y-3 bg-green-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4"></div>
+        </div>
+      )}
+
+      {projectMenu === "Case Studies" && (
+        <div className="w-fill justify-center">
+          <div className="mx-auto columns-1 gap-3 space-y-3 bg-blue-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4"></div>
+        </div>
+      )}
     </section>
   );
 };
@@ -56,7 +128,7 @@ const ProjectsSection = ({ data }: { data: ProjectData }) => {
 export default ProjectsSection;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await client.query({
+  const { data }: { data: ProjectData } = await client.query({
     query: gql`
       {
         developerPosts {
@@ -66,14 +138,40 @@ export const getStaticProps: GetStaticProps = async () => {
               id
               title
               subtitle
+              slug
+              images {
+                url
+              }
             }
           }
         }
         caseStudies {
           id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              slug
+              subtitle
+              title
+              images {
+                url
+              }
+            }
+          }
         }
         graphicDesigns {
           id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              slug
+              images {
+                url
+              }
+              title
+              subtitle
+            }
+          }
         }
       }
     `,
