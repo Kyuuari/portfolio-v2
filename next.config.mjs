@@ -20,5 +20,22 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.graphassets.com",
+        // port: "",
+        // pathname: "/account123/**",
+      },
+      // {
+      //   protocol: "https",
+      //   hostname: "picsum.photos",
+      //   // port: "",
+      //   // pathname: "/account123/**",
+      // },
+    ],
+  },
 };
 export default config;

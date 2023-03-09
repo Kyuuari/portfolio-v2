@@ -3,73 +3,22 @@ import client from "../lib/apolloClient";
 import { GetStaticProps } from "next";
 import { gql } from "@apollo/client";
 import Image from "next/image";
-
-// interface ProjectData {
-//   developerPosts: {
-//     id: string;
-//     projectInfo: {
-//       id: string;
-//       title: string;
-//       subtitle: string;
-//       slug: string;
-//       images: {
-//         url: string;
-//       }[];
-//     };
-//   }[];
-//   caseStudies: {
-//     id: string;
-//     projectInfo: {
-//       id: string;
-//       title: string;
-//       subtitle: string;
-//       slug: string;
-//       images: {
-//         url: string;
-//       }[];
-//     };
-//   }[];
-//   graphicDesigns: {
-//     id: string;
-//     projectInfo: {
-//       id: string;
-//       title: string;
-//       subtitle: string;
-//       slug: string;
-//       images: {
-//         url: string;
-//       }[];
-//     };
-//   }[];
-// }
-
-interface ImageData {
-  url: string;
-}
-
-interface ProjectInfo {
-  id: string;
-  title: string;
-  subtitle: string;
-  slug: string;
-  images: ImageData[];
-}
-
-interface PostData {
-  id: string;
-  projectInfo: ProjectInfo;
-}
-
-interface ProjectData {
-  developerPosts: PostData[];
-  caseStudies: PostData[];
-  graphicDesigns: PostData[];
-}
+import { PostData, ProjectData } from "../types/types";
 
 const ProjectsSection = ({ data }: { data: ProjectData }) => {
-  console.log(data);
+  // console.log(data);
   const [projectMenu, setprojectMenu] = useState("Dev");
   // console.log(projectMenu);
+
+  let filteredData: PostData[] = [];
+  if (projectMenu === "Dev") {
+    filteredData = data.developerPosts;
+  } else if (projectMenu === "Graphic Design") {
+    filteredData = data.graphicDesigns;
+  } else if (projectMenu === "Case Studies") {
+    filteredData = data.caseStudies;
+  }
+
   return (
     <section id="projects" className="h-auto">
       <div className="grid justify-center">
@@ -96,31 +45,27 @@ const ProjectsSection = ({ data }: { data: ProjectData }) => {
         </ul>
       </div>
 
-      {projectMenu === "Dev" && (
-        <div className="w-fill justify-center">
-          <div className="mx-auto columns-1 gap-3 space-y-3 bg-red-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4">
-            {data.developerPosts.map((post) => (
-              <div key={post.id} className="break-inside-avoid">
-                {post.projectInfo.images && post.projectInfo.images[0]?.url && (
-                  <img src={post.projectInfo.images[0].url} alt={post.id} />
-                )}
+      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="grid grid-cols-1 gap-y-10 gap-x-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {filteredData.map((post) =>
+            post.projectInfo.images && post.projectInfo.images[0]?.url ? (
+              <div
+                key={post.id}
+                className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden"
+              >
+                <Image
+                  src={post.projectInfo.images[0].url}
+                  // src={"https://picsum.photos/200/300"}
+                  width={200}
+                  height={200}
+                  className="group-hover:opacity-75"
+                  alt={post.id}
+                />
               </div>
-            ))}
-          </div>
+            ) : null
+          )}
         </div>
-      )}
-
-      {projectMenu === "Graphic Design" && (
-        <div className="w-fill justify-center">
-          <div className="mx-auto columns-1 gap-3 space-y-3 bg-green-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4"></div>
-        </div>
-      )}
-
-      {projectMenu === "Case Studies" && (
-        <div className="w-fill justify-center">
-          <div className="mx-auto columns-1 gap-3 space-y-3 bg-blue-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4"></div>
-        </div>
-      )}
+      </div>
     </section>
   );
 };

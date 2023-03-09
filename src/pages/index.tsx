@@ -4,47 +4,7 @@ import { HeroSection } from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
 import ProjectsSection, { getStaticProps } from "../components/ProjectsSection";
-
-interface HomeProps {
-  data: {
-    developerPosts: {
-      id: string;
-      projectInfo: {
-        id: string;
-        title: string;
-        subtitle: string;
-        slug: string;
-        images: {
-          url: string;
-        }[];
-      };
-    }[];
-    caseStudies: {
-      id: string;
-      projectInfo: {
-        id: string;
-        title: string;
-        subtitle: string;
-        slug: string;
-        images: {
-          url: string;
-        }[];
-      };
-    }[];
-    graphicDesigns: {
-      id: string;
-      projectInfo: {
-        id: string;
-        title: string;
-        subtitle: string;
-        slug: string;
-        images: {
-          url: string;
-        }[];
-      };
-    }[];
-  };
-}
+import { HomeProps } from "../types/types";
 
 const Home: NextPage<HomeProps> = ({ data }) => {
   return (
