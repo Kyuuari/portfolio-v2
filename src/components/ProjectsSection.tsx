@@ -1,80 +1,87 @@
 import React from "react";
+import client from "../lib/apolloClient";
+import { GetStaticProps } from "next";
+import { gql } from "@apollo/client";
 
-const ProjectsSection = () => {
+interface ProjectData {
+  developerPosts: {
+    id: string;
+  }[];
+}
+
+const ProjectsSection = ({ data }: { data: ProjectData }) => {
+  console.log(data);
   return (
-    <section className="h-auto w-screen">
-      {/* <h1 className="text-lg font-bold">Projects</h1>
-      <div className="place-items-center">
-        <div className="carousel rounded-box h-[600px] py-3">
-          <div className="carousel-item ">
-            <div className="card w-96 bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  className=""
-                  src="https://images.unsplash.com/photo-1676629131849-1039f0c96566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <button className="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item ">
-            <img
-              src="https://images.unsplash.com/photo-1676629131849-1039f0c96566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-full">
-            <div className="card w-96 bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  src="https://images.unsplash.com/photo-1676629131849-1039f0c96566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <button className="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item w-full">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-full">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-1/2">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-1/2">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
+    <section id="projects" className="h-auto">
+      <div className="grid justify-center">
+        <div className="place-items-center py-2">
+          {/* <div className="place-content-start"> */}
+          <h1 className="text-lg font-bold">Projects</h1>
+          <div className="place-items-center">
+            {/* <h1 className="text-2xl font-bold">Coming Soon</h1> */}
           </div>
         </div>
-      </div> */}
+      </div>
+
+      <div className="- grid place-items-center py-2 md:place-items-end">
+        <ul className="menu rounded-box menu-horizontal bg-base-100">
+          <li>
+            <a>Dev</a>
+          </li>
+          <li>
+            <a>Graphic Design</a>
+          </li>
+          <li>
+            <a>Case Studies</a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="w-fill justify-center">
+        <div className="mx-auto columns-1 gap-3 space-y-3 bg-red-400 pb-28 sm:columns-2 md:columns-3 lg:columns-4">
+          {/* {data.developerPosts.map((post) => (
+              <div key={post.id} className="card-body">
+                {post.id}
+              </div>
+            ))} */}
+          <div className="break-inside-avoid bg-gray-200">Post Name</div>
+          <div className="break-inside-avoid bg-gray-200">Post Name</div>
+          <div className="break-inside-avoid bg-gray-200">Post Name</div>
+        </div>
+      </div>
     </section>
   );
 };
 
 export default ProjectsSection;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await client.query({
+    query: gql`
+      {
+        developerPosts {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              title
+              subtitle
+            }
+          }
+        }
+        caseStudies {
+          id
+        }
+        graphicDesigns {
+          id
+        }
+      }
+    `,
+  });
+  return {
+    props: {
+      data,
+    },
+    revalidate: 10,
+  };
+};
