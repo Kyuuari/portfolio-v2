@@ -10,15 +10,15 @@ const AboutSection = () => {
         </div>
 
         <p className="max-w-[60ch]">
-          Welcome to the page! I&apos;m Chester (@Kyuuari), and I&apos;m
-          exciteed to share my passion for creativity and problem-solving with
-          you. I&apos;ve always been interested in design, and as a web
-          developer, I&apos;ve been able to combine my technical skills with my
-          love of aesthetics. On this page, you&apos;ll find a variety of
-          projects that showcase my work in graphic design, 3D modeling, web
-          applications, and more. I&apos;m constantly pushing myself to improve
-          and explore new techniques, and I&apos;d love to collaborate with you
-          to bring your ideas to life.
+          Welcome to the page! I&apos;m Chester (@Kyuuari), and I&apos;m excited
+          to share my passion for creativity and problem-solving with you.
+          I&apos;ve always been interested in design, and as a web developer,
+          I&apos;ve been able to combine my technical skills with my love of
+          aesthetics. On this page, you&apos;ll find a variety of projects that
+          showcase my work in graphic design, 3D modeling, web applications, and
+          more. I&apos;m constantly pushing myself to improve and explore new
+          techniques, and I&apos;d love to collaborate with you to bring your
+          ideas to life.
         </p>
       </div>
     </section>
