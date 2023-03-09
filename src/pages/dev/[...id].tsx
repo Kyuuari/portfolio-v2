@@ -121,5 +121,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `,
     variables: { id },
   });
-  return { props: { data } };
+  return { props: { data }, revalidate: 10 };
 };
