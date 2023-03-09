@@ -5,8 +5,6 @@ import client from "../../lib/apolloClient";
 import { gql } from "@apollo/client";
 import Image from "next/image";
 
-type Props = {};
-
 const DevPage = ({ data }: { data: ProjectData }) => {
   console.log(data.developerPosts[0]?.projectInfo.title);
   return (
@@ -77,9 +75,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-interface prams {
-  params: { id: String[] };
-}
+// interface prams {
+//   params: { id: string[] };
+// }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id?.[0] ?? null;
