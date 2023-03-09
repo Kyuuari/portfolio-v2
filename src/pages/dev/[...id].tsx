@@ -1,27 +1,27 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
-import { PostData, ProjectData } from "../../types/types";
+import { ProjectData } from "../../types/types";
 import client from "../../lib/apolloClient";
 import { gql } from "@apollo/client";
+import { RichText } from "@graphcms/rich-text-react-renderer";
 import Image from "next/image";
 
 const DevPage = ({ data }: { data: ProjectData }) => {
-  console.log(data.developerPosts[0]?.projectInfo.title);
+  // console.log(data);
+  const postdata = data.developerPosts[0]?.projectInfo;
+  const raw = postdata?.content.raw;
+  // const raw = postdata?.content.raw;
+  console.log(raw);
   return (
-    <section id="about" className="h-auto py-16">
+    <section className="h-auto py-16">
       <div className="grid justify-center">
         <div className="">
-          <h1 className="text-lg font-bold">
-            {data.developerPosts[0]?.projectInfo.title}
-          </h1>
-          <h1 className="text-lg font-bold">
-            {data.developerPosts[0]?.projectInfo.subtitle}
-          </h1>
+          <h1 className="text-lg font-bold">{postdata?.title}</h1>
+          <h2 className="font-bold">{postdata?.subtitle}</h2>
         </div>
-
         <div>
           <Image
-            src={data.developerPosts[0]?.projectInfo.images[0]?.url ?? ""}
+            src={postdata?.images[0]?.url ?? ""}
             width={200}
             height={200}
             loading="lazy"
@@ -29,8 +29,15 @@ const DevPage = ({ data }: { data: ProjectData }) => {
             alt={data.developerPosts[0]?.projectInfo.title ?? "Project"}
           />
         </div>
+        {raw ? (
+          <RichText content={raw}></RichText>
+        ) : (
+          <>
+            <h1>Empty</h1>
+          </>
+        )}
 
-        <p className="max-w-[60ch]">
+        {/* <p className="max-w-[60ch]">
           Welcome to the page! I&apos;m Chester (@Kyuuari), and I&apos;m excited
           to share my passion for creativity and problem-solving with you.
           I&apos;ve always been interested in design, and as a web developer,
@@ -40,7 +47,7 @@ const DevPage = ({ data }: { data: ProjectData }) => {
           more. I&apos;m constantly pushing myself to improve and explore new
           techniques, and I&apos;d love to collaborate with you to bring your
           ideas to life.
-        </p>
+        </p> */}
       </div>
     </section>
   );
@@ -54,17 +61,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
       {
         developerPosts {
           id
-          projectInfo {
-            ... on ProjectInfo {
-              id
-              title
-              subtitle
-              slug
-              images {
-                url
-              }
-            }
-          }
+          # projectInfo {
+          #   ... on ProjectInfo {
+          #     id
+          #     title
+          #     subtitle
+          #     slug
+          #     images {
+          #       url
+          #     }
+          #     content{
+          #       raw
+          #     }
+          #   }
+          # }
         }
       }
     `,
@@ -100,6 +110,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
               title
               images {
                 url
+              }
+              content {
+                raw
               }
             }
           }
