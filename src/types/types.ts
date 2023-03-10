@@ -1,22 +1,13 @@
-import { RichTextContent } from '@graphcms/rich-text-types';
-
 export interface ImageData {
   url: string;
 }
-
-import { ElementNode } from '@graphcms/rich-text-types';
-
-type Content = {
-    raw: RichTextContent;
-};
-
 export interface ProjectInfo {
   id: string;
   title: string;
   subtitle: string;
   slug: string;
   images: ImageData[];
-  content: Content; 
+  content: string;
 }
 
 export interface PostData {

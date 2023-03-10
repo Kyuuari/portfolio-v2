@@ -13,48 +13,28 @@ interface Props {
   projectInfo: ProjectInfo;
   mdxSource: MDXRemoteSerializeResult;
 }
-const DevPage = ({ projectInfo, mdxSource }: Props) => {
+const CasePage = ({ projectInfo, mdxSource }: Props) => {
   // const mdxComponents = useMDXComponents();
   return (
     <section className="h-auto py-16">
       <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
-      {/* <div className="grid justify-center">
-        <div className="">
-          <h1 className="text-lg font-bold">{projectInfo.title}</h1>
-          <h2 className="font-bold">{projectInfo.subtitle}</h2>
-        </div>
-        <div>
-          <Image
-            src={projectInfo.images[0]?.url ?? ""}
-            width={200}
-            height={200}
-            loading="lazy"
-            className="hover:opacity-75"
-            alt={"Project Image"}
-          />
-        </div>
-
-        <div className="wrapper max-w-[60ch]">
-          <MDXRemote {...mdxSource} components={mdxComponents} />
-        </div>
-      </div> */}
     </section>
   );
 };
 
-export default DevPage;
+export default CasePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data }: { data: ProjectData } = await client.query({
     query: gql`
       {
-        developerPosts {
+        caseStudies {
           id
         }
       }
     `,
   });
-  const paths = data.developerPosts.map((post) => ({
+  const paths = data.caseStudies.map((post) => ({
     params: { id: [post.id] },
   }));
   return { paths, fallback: false };
@@ -65,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data }: { data: ProjectData } = await client.query({
     query: gql`
       query GetPost($id: ID!) {
-        developerPosts(where: { id: $id }) {
+        caseStudies(where: { id: $id }) {
           id
           projectInfo {
             ... on ProjectInfo {
@@ -84,8 +64,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `,
     variables: { id },
   });
-  const postdata = data.developerPosts[0]?.projectInfo?.content;
-  const projectInfo = data.developerPosts[0]?.projectInfo;
+  const postdata = data.caseStudies[0]?.projectInfo?.content;
+  const projectInfo = data.caseStudies[0]?.projectInfo;
   const mdxSource = await serialize(postdata ?? "");
   // console.log(mdxSource);
   return {

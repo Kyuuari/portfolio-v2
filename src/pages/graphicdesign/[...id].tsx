@@ -13,7 +13,7 @@ interface Props {
   projectInfo: ProjectInfo;
   mdxSource: MDXRemoteSerializeResult;
 }
-const DevPage = ({ projectInfo, mdxSource }: Props) => {
+const GraphicsPage = ({ projectInfo, mdxSource }: Props) => {
   // const mdxComponents = useMDXComponents();
   return (
     <section className="h-auto py-16">
@@ -42,19 +42,19 @@ const DevPage = ({ projectInfo, mdxSource }: Props) => {
   );
 };
 
-export default DevPage;
+export default GraphicsPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data }: { data: ProjectData } = await client.query({
     query: gql`
       {
-        developerPosts {
+        graphicDesigns {
           id
         }
       }
     `,
   });
-  const paths = data.developerPosts.map((post) => ({
+  const paths = data.graphicDesigns.map((post) => ({
     params: { id: [post.id] },
   }));
   return { paths, fallback: false };
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data }: { data: ProjectData } = await client.query({
     query: gql`
       query GetPost($id: ID!) {
-        developerPosts(where: { id: $id }) {
+        graphicDesigns(where: { id: $id }) {
           id
           projectInfo {
             ... on ProjectInfo {
@@ -84,8 +84,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `,
     variables: { id },
   });
-  const postdata = data.developerPosts[0]?.projectInfo?.content;
-  const projectInfo = data.developerPosts[0]?.projectInfo;
+  const postdata = data.graphicDesigns[0]?.projectInfo?.content;
+  const projectInfo = data.graphicDesigns[0]?.projectInfo;
   const mdxSource = await serialize(postdata ?? "");
   // console.log(mdxSource);
   return {
