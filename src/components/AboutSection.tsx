@@ -5,7 +5,7 @@ const AboutSection = () => {
     <section id="about" className="h-auto">
       <div className="grid justify-center">
         <div className="">
-          <h1 className="text-lg font-bold">About Me</h1>
+          <h1 className="text-lg font-bold">About Me 🌱</h1>
           {/* <h1 className="text-lg font-bold">Chester Cari</h1> */}
         </div>
 

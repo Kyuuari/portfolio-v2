@@ -3,11 +3,14 @@ import Head from "next/head";
 import { HeroSection } from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
-// import ProjectsSection, { getStaticProps } from "../components/ProjectsSection";
-import { HomeProps } from "../types/types";
-import Layout from "../components/Layout";
+import ProjectsSection from "../components/ProjectsSection";
+import { HomeProps, ProjectData } from "../types/types";
+// import Layout from "../components/Layout";
+import { GetStaticProps } from "next";
+import client from "../lib/apolloClient";
+import { gql } from "@apollo/client";
 
-const Home: NextPage<HomeProps> = () => {
+const Home: NextPage<HomeProps> = ({ data }) => {
   return (
     <>
       <Head>
@@ -20,17 +23,69 @@ const Home: NextPage<HomeProps> = () => {
         <meta property="og:title" content="Kyuuari Project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+
+      <main>
         <HeroSection />
         <AboutSection />
         <ServicesSection />
-        {/* <ProjectsSection data={data} /> */}
-        {/* <div className="h-5 py-5" /> */}
-      </Layout>
+        <ProjectsSection data={data} />
+      </main>
     </>
   );
 };
 
 export default Home;
 
-// export { getStaticProps };
+export const getStaticProps: GetStaticProps = async () => {
+  const { data }: { data: ProjectData } = await client.query({
+    query: gql`
+      {
+        developerPosts {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              title
+              subtitle
+              images {
+                url
+              }
+            }
+          }
+        }
+        caseStudies {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              subtitle
+              title
+              images {
+                url
+              }
+            }
+          }
+        }
+        graphicDesigns {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              images {
+                url
+              }
+              title
+              subtitle
+            }
+          }
+        }
+      }
+    `,
+  });
+  return {
+    props: {
+      data,
+    },
+    revalidate: 10,
+  };
+};

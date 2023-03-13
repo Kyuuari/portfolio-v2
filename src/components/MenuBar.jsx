@@ -26,7 +26,9 @@ const MenuBar = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/projects"}>Projects</Link>
+            <Link href={"/#projects"} scroll={false}>
+              Projects
+            </Link>
           </li>
         </ul>
       </div>

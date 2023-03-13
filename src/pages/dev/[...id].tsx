@@ -17,11 +17,9 @@ interface Props {
 }
 const DevPage = ({ projectInfo, mdxSource }: Props) => {
   return (
-    <Layout>
-      <section className="h-auto py-16">
-        <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
-      </section>
-    </Layout>
+    <section className="h-auto py-16">
+      <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
+    </section>
   );
 };
 

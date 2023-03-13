@@ -27,7 +27,6 @@ const ProjectGrid = ({ filteredData, projectMenu }: Props) => {
                   className="object-contain hover:opacity-75"
                   alt={post.id}
                 />
-                {/* <div className="bg-red-300">Project Name</div> */}
               </Link>
             ) : null
           )}

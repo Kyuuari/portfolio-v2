@@ -3,10 +3,13 @@ import { MDXComponents } from "mdx/types";
 
 const mdxComponents = (): MDXComponents => ({
   h1: ({ children }: React.HTMLProps<HTMLHeadingElement>) => (
-    <h1 className="font-bold text-blue-500">{children}</h1>
+    <h1 className="text-2xl font-bold">{children}</h1>
   ),
   h2: ({ children }: React.HTMLProps<HTMLHeadingElement>) => (
-    <h1 className="text-red-600">{children}</h1>
+    <h2 className="text-lg font-bold">{children}</h2>
+  ),
+  h3: ({ children }: React.HTMLProps<HTMLHeadingElement>) => (
+    <h2 className="text-base font-bold">{children}</h2>
   ),
   a: (props: React.HTMLProps<HTMLAnchorElement>) => (
     <a href={props.href} title={props.title} className="text-red-600">
@@ -15,6 +18,13 @@ const mdxComponents = (): MDXComponents => ({
   ),
   ul: ({ children }: React.HTMLProps<HTMLUListElement>) => (
     <ul className="list-inside list-disc">{children}</ul>
+  ),
+  pre: ({ children }: React.HTMLProps<HTMLPreElement>) => (
+    <div className="mockup-code rounded text-sm">
+      <pre>
+        <code className="language-javascript">{children}</code>
+      </pre>
+    </div>
   ),
   // li: ({ children }: React.HTMLProps<HTMLUListElement>) => <li>{children}</li>,
 });
