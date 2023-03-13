@@ -3,11 +3,11 @@ import Head from "next/head";
 import { HeroSection } from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
-import ProjectsSection, { getStaticProps } from "../components/ProjectsSection";
+// import ProjectsSection, { getStaticProps } from "../components/ProjectsSection";
 import { HomeProps } from "../types/types";
 import Layout from "../components/Layout";
 
-const Home: NextPage<HomeProps> = ({ data }) => {
+const Home: NextPage<HomeProps> = () => {
   return (
     <>
       <Head>
@@ -20,20 +20,17 @@ const Home: NextPage<HomeProps> = ({ data }) => {
         <meta property="og:title" content="Kyuuari Project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <main className="absolute top-0 z-[-1] w-full"> */}
       <Layout>
         <HeroSection />
-        {/* <AboutSection />
+        <AboutSection />
         <ServicesSection />
-        <ProjectsSection data={data} /> */}
+        {/* <ProjectsSection data={data} /> */}
         {/* <div className="h-5 py-5" /> */}
       </Layout>
-
-      {/* </main> */}
     </>
   );
 };
 
 export default Home;
 
-export { getStaticProps };
+// export { getStaticProps };

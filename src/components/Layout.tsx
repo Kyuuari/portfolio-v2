@@ -17,29 +17,10 @@ const variants = {
   exit: { opacity: 0, x: 0, y: -100 },
 };
 
-const variants3 = {
-  hidden: { opacity: 0, x: -200, y: 0 },
-  enter: { opacity: 1, x: 0, y: -100 },
-  exit: { opacity: 0, x: 0, y: 0 },
-};
-
-const variants1 = {
-  initialState: {
-    opacity: 0,
-    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-  },
-  animateState: {
-    opacity: 1,
-    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-  },
-  exitState: {
-    clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
-  },
-};
-
 const Layout = ({ children }: Props): JSX.Element => (
   <>
     <motion.main
+      layout
       initial="hidden"
       animate="enter"
       exit="exit"

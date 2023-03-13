@@ -71,7 +71,7 @@ export function Origin() {
 }
 export function Overlay() {
   return (
-    <div className="sticky z-[100] text-accent-content mix-blend-difference">
+    <div className="sticky z-[100]">
       <Origin />
       <MenuBar />
     </div>

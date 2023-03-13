@@ -13,7 +13,7 @@ const MenuBar = () => {
         </label>
         <ul
           tabIndex={0}
-          className="dropdown-content menu rounded-box menu-compact w-52 shadow"
+          className="dropdown-content menu rounded-box menu-compact w-52 bg-base-100"
         >
           <li>
             <Link href={"/#home"} scroll={false}>
@@ -21,14 +21,12 @@ const MenuBar = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/about"} scroll={false}>
+            <Link href={"/#about"} scroll={false}>
               About
             </Link>
           </li>
           <li>
-            <Link href={"/projects"} scroll={false}>
-              Projects
-            </Link>
+            <Link href={"/projects"}>Projects</Link>
           </li>
         </ul>
       </div>

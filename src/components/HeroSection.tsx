@@ -3,12 +3,14 @@ import { Suspense, useRef } from "react";
 import { Loader, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { Mesh } from "three";
+// import { LayerMaterial, Depth, Noise } from "lamina";
 
 export function HeroSection() {
   return (
     <div id="home" className="h-screen">
-      <Canvas className="">
+      <Canvas dpr={[1, 2]} className="">
         <Suspense fallback={<Loader />}>
+          {/* <Bg /> */}
           <Objects />
           <Html center className="">
             <article className="grid h-full w-full grow place-items-center">
@@ -60,3 +62,31 @@ export function Objects() {
     </>
   );
 }
+
+// function Bg() {
+//   return (
+//     <mesh scale={100}>
+//       <boxGeometry args={[1, 1, 1]} />
+//       <LayerMaterial side={THREE.BackSide}>
+//         <Depth
+//           colorB="red"
+//           colorA="skyblue"
+//           alpha={1}
+//           mode="normal"
+//           near={130}
+//           far={200}
+//           origin={[100, 100, -100]}
+//         />
+//         <Noise
+//           mapping="local"
+//           type="white"
+//           scale={1000}
+//           colorA="white"
+//           colorB="black"
+//           mode="subtract"
+//           alpha={0.2}
+//         />
+//       </LayerMaterial>
+//     </mesh>
+//   );
+// }
