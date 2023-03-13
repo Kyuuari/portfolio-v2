@@ -3,9 +3,12 @@ import { MDXProvider } from "@mdx-js/react";
 import "../styles/globals.css";
 import { themeChange } from "theme-change";
 import { useEffect } from "react";
-import { Origin, Overlay } from "../components/Overlay";
+import { Overlay } from "../components/Overlay";
 import { Analytics } from "@vercel/analytics/react";
 import mdxComponents from "../lib/mdxComponents";
+import { AnimatePresence } from "framer-motion";
+// import { motion } from "framer-motion";
+// import { useFollowPointer } from "../lib/use-follow-pointer";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -16,8 +19,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     <>
       <MDXProvider components={mdxComponents}>
         <Overlay />
-        <Origin />
-        <Component {...pageProps} />
+        <AnimatePresence mode="sync" initial={false}>
+          <Component {...pageProps} />
+        </AnimatePresence>
         <Analytics />
       </MDXProvider>
     </>

@@ -5,6 +5,7 @@ import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
 import ProjectsSection, { getStaticProps } from "../components/ProjectsSection";
 import { HomeProps } from "../types/types";
+import Layout from "../components/Layout";
 
 const Home: NextPage<HomeProps> = ({ data }) => {
   return (
@@ -19,13 +20,16 @@ const Home: NextPage<HomeProps> = ({ data }) => {
         <meta property="og:title" content="Kyuuari Project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="absolute top-0 z-[-1] w-full">
+      {/* <main className="absolute top-0 z-[-1] w-full"> */}
+      <Layout>
         <HeroSection />
-        <AboutSection />
+        {/* <AboutSection />
         <ServicesSection />
-        <ProjectsSection data={data} />
-        <div className="h-5 py-5" />
-      </main>
+        <ProjectsSection data={data} /> */}
+        {/* <div className="h-5 py-5" /> */}
+      </Layout>
+
+      {/* </main> */}
     </>
   );
 };

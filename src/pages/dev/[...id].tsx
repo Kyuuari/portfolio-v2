@@ -8,37 +8,20 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 // import { useMDXComponents } from "@mdx-js/react";
 import ProjectDetails from "../../components/ProjectDetails";
+import Layout from "../../components/Layout";
+import { useInView } from "framer-motion";
 
 interface Props {
   projectInfo: ProjectInfo;
   mdxSource: MDXRemoteSerializeResult;
 }
 const DevPage = ({ projectInfo, mdxSource }: Props) => {
-  // const mdxComponents = useMDXComponents();
   return (
-    <section className="h-auto py-16">
-      <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
-      {/* <div className="grid justify-center">
-        <div className="">
-          <h1 className="text-lg font-bold">{projectInfo.title}</h1>
-          <h2 className="font-bold">{projectInfo.subtitle}</h2>
-        </div>
-        <div>
-          <Image
-            src={projectInfo.images[0]?.url ?? ""}
-            width={200}
-            height={200}
-            loading="lazy"
-            className="hover:opacity-75"
-            alt={"Project Image"}
-          />
-        </div>
-
-        <div className="wrapper max-w-[60ch]">
-          <MDXRemote {...mdxSource} components={mdxComponents} />
-        </div>
-      </div> */}
-    </section>
+    <Layout>
+      <section className="h-auto py-16">
+        <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
+      </section>
+    </Layout>
   );
 };
 

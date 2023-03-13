@@ -3,11 +3,38 @@
 @tailwind utilities;
 
 @layer base {
+    /* @keyframes slideup-text {
+            50% {
+                background-size: 100% 100%;
+            }
+        } */
+
     html {
         @apply scroll-smooth;
     }
     section {
         padding: 2rem;
     }
+    /* .animation-wrapper{
+box-sizing: border-box;
+    border: 1px white solid;
+    padding: 1rem;
+    font-size: clamp(1vw, 1.5rem, 2vh);
+    font-family: sans-serif;
+    background-image: linear-gradient(white 0%, yellow 50%, green 100%);
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: slideup-text 5s infinite;
+    background-size: 0% 100%;
+    } 
+    .left-right{
+         background-size: 0% 100%;
+    } */
 }
+
 

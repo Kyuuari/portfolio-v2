@@ -7,7 +7,11 @@ import { PostData, ProjectData } from "../types/types";
 import Link from "next/link";
 import ProjectGrid from "./ProjectGrid";
 
-const ProjectsSection = ({ data }: { data: ProjectData }) => {
+interface Props {
+  data: ProjectData;
+}
+
+const ProjectsSection = ({ data }: Props) => {
   // console.log(data);
   const [projectMenu, setprojectMenu] = useState("dev");
   // console.log(projectMenu);
@@ -45,6 +49,33 @@ const ProjectsSection = ({ data }: { data: ProjectData }) => {
             <a>Case Studies</a>
           </li>
         </ul>
+
+        {/* <div className="tabs">
+          <a
+            className={`tab tab-lifted ${
+              projectMenu === "dev" ? "tab-active" : ""
+            }`}
+            onClick={() => setprojectMenu("dev")}
+          >
+            Dev
+          </a>
+          <a
+            className={`tab tab-lifted ${
+              projectMenu === "graphicdesign" ? "tab-active" : ""
+            }`}
+            onClick={() => setprojectMenu("graphicdesign")}
+          >
+            Graphic Design
+          </a>
+          <a
+            className={`tab tab-lifted ${
+              projectMenu === "casestudies" ? "tab-active" : ""
+            }`}
+            onClick={() => setprojectMenu("casestudies")}
+          >
+            Case Studies
+          </a>
+        </div> */}
       </div>
 
       <ProjectGrid filteredData={filteredData} projectMenu={projectMenu} />

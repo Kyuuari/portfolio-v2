@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // type Props = {};
-const ThemeList = ["cmyk", "black"];
+const ThemeList = ["lofi", "black"];
 
 const ThemeToggler = () => {
   //get local theme

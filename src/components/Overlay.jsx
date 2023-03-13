@@ -5,7 +5,7 @@ import { FaGithub, FaInstagram, FaBehance, FaLinkedin } from "react-icons/fa";
 export function Origin() {
   return (
     <div className="absolute top-0 left-0 grow">
-      <div className="font-bol fixed left-24 -bottom-8 z-[100] origin-left rotate-90 whitespace-nowrap text-right text-base">
+      <div className="font-bol fixed left-24 -bottom-8 origin-left rotate-90 whitespace-nowrap text-right text-base">
         {/* &nbsp;&nbsp;&nbsp;&nbsp; + ● ┓ */}
         <div className="grid gap-4">
           <a aria-label="Go to github" href="https://github.com/Kyuuari">
@@ -65,34 +65,15 @@ export function Origin() {
           alignItems: "flex-start",
           justifyContent: "center",
         }}
-      >
-        {/* <div style={{ width: 10 }} /> */}
-      </div>
+      ></div>
     </div>
   );
 }
-
-export function Underlay() {
-  return (
-    <>
-      {/* <div className="absolute bottom-0 right-0 bg-red-600 "> */}
-      <div className="flex flex-row">
-        <p className="origin-right translate-y-full rotate-90 whitespace-nowrap p-2 text-sm font-bold">
-          About &nbsp;&nbsp;&nbsp;&nbsp; ●
-        </p>
-        <p className="origin-right translate-y-full rotate-90 whitespace-nowrap p-2 text-sm font-bold">
-          Projects &nbsp;&nbsp;&nbsp;&nbsp; ●
-        </p>
-        {/* </div> */}
-      </div>
-    </>
-  );
-}
-
 export function Overlay() {
   return (
-    <>
+    <div className="sticky z-[100] text-accent-content mix-blend-difference">
+      <Origin />
       <MenuBar />
-    </>
+    </div>
   );
 }
