@@ -27,15 +27,15 @@ const Home: NextPage<HomeProps> = ({ data }) => {
       <main>
         <HeroSection />
 
-        <div className="p-8">
+        <div className="px-10 py-16">
           <AboutSection />
         </div>
 
-        <div className="p-8">
+        <div className="px-10 py-16">
           <ServicesSection />
         </div>
 
-        <div className="min-h-screen p-8">
+        <div className="min-h-screen px-10">
           <ProjectsSection data={data} />
         </div>
       </main>

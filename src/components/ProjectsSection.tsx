@@ -37,8 +37,8 @@ const ProjectsSection = ({ data }: Props) => {
         </div>
       </div>
 
-      <div className="- grid place-items-center py-2 md:place-items-end">
-        <ul className="menu rounded-box menu-horizontal bg-base-100 font-bold">
+      <div className="flex flex-wrap sm:justify-end">
+        <ul className="menu rounded-box menu-horizontal justify-center gap-4 bg-base-100 font-bold">
           <li onClick={() => setprojectMenu("dev")}>
             <a>Dev</a>
           </li>

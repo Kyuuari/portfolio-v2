@@ -3,10 +3,8 @@ import React from "react";
 import { ProjectData, ProjectInfo } from "../../types/types";
 import client from "../../lib/apolloClient";
 import { gql } from "@apollo/client";
-// import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-// import { useMDXComponents } from "@mdx-js/react";
 import ProjectDetails from "../../components/ProjectDetails";
 
 interface Props {
@@ -14,9 +12,8 @@ interface Props {
   mdxSource: MDXRemoteSerializeResult;
 }
 const CasePage = ({ projectInfo, mdxSource }: Props) => {
-  // const mdxComponents = useMDXComponents();
   return (
-    <section className="h-auto py-16">
+    <section className="w-screen">
       {/* <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} /> */}
     </section>
   );
@@ -28,13 +25,13 @@ export default CasePage;
 //   const { data }: { data: ProjectData } = await client.query({
 //     query: gql`
 //       {
-//         caseStudies {
+//         developerPosts {
 //           id
 //         }
 //       }
 //     `,
 //   });
-//   const paths = data.caseStudies.map((post) => ({
+//   const paths = data.developerPosts.map((post) => ({
 //     params: { id: [post.id] },
 //   }));
 //   return { paths, fallback: false };
@@ -50,13 +47,17 @@ export default CasePage;
 //           projectInfo {
 //             ... on ProjectInfo {
 //               id
-//               slug
-//               subtitle
 //               title
+//               description
+//               platforms
+//               technologyUsed
+//               coverImage {
+//                 url
+//               }
 //               images {
 //                 url
 //               }
-//               content
+//               links
 //             }
 //           }
 //         }
@@ -64,7 +65,7 @@ export default CasePage;
 //     `,
 //     variables: { id },
 //   });
-//   const postdata = data.caseStudies[0]?.projectInfo?.content;
+//   const postdata = data.caseStudies[0]?.projectInfo?.links;
 //   const projectInfo = data.caseStudies[0]?.projectInfo;
 //   const mdxSource = await serialize(postdata ?? "");
 //   // console.log(mdxSource);

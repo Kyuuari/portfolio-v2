@@ -16,7 +16,7 @@ interface Props {
 const GraphicsPage = ({ projectInfo, mdxSource }: Props) => {
   // const mdxComponents = useMDXComponents();
   return (
-    <section className="h-auto py-16">
+    <section className="w-screen">
       <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
       {/* <div className="grid justify-center">
         <div className="">

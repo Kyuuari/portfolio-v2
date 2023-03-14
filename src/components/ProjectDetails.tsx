@@ -21,7 +21,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
       <section className="flex w-screen flex-col items-center justify-center">
         <div className="flex flex-col sm:m-28 sm:flex-row">
           <div className="sm:m-8">
-            <div className="relative aspect-square h-32 w-screen sm:h-56 sm:w-56">
+            <div className="min-h-32 relative aspect-square w-screen sm:h-56 sm:w-56">
               <Image
                 src={projectInfo.coverImage.url ?? ""}
                 fill
@@ -38,7 +38,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
             </>
             <div>
               <h3 className="font-bold">Platforms</h3>
-              <div className="flex">
+              <div className="flex flex-wrap gap-4">
                 {projectInfo.platforms.map((platform, index) => (
                   <p key={index} className="">
                     {platform}
