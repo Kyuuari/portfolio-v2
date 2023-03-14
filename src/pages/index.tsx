@@ -29,7 +29,13 @@ const Home: NextPage<HomeProps> = ({ data }) => {
 
         <div className="p-8">
           <AboutSection />
+        </div>
+
+        <div className="p-8">
           <ServicesSection />
+        </div>
+
+        <div className="min-h-screen p-8">
           <ProjectsSection data={data} />
         </div>
       </main>

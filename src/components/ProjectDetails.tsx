@@ -31,37 +31,39 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
             </div>
           </div>
 
-          <div className="m-8">
+          <div className="m-8 grid gap-8">
             <>
               <h1 className="text-5xl font-bold">{projectInfo.title}</h1>
               <p className="max-w-[60ch]">{projectInfo.description}</p>
             </>
-            <>
+            <div>
               <h3 className="font-bold">Platforms</h3>
-              {projectInfo.platforms.map((platform, index) => (
-                <p key={index} className="">
-                  {platform}
-                </p>
-              ))}
-            </>
-            <>
+              <div className="flex">
+                {projectInfo.platforms.map((platform, index) => (
+                  <p key={index} className="">
+                    {platform}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div>
               <h3 className="font-bold">Technologies Used</h3>
-              {projectInfo.technologyUsed.map((platform, index) => (
-                <p key={index} className="">
-                  {platform}
-                </p>
-              ))}
-            </>
-          </div>
-        </div>
+              <div className="flex flex-wrap gap-4">
+                {projectInfo.technologyUsed.map((platform, index) => (
+                  <p key={index} className="">
+                    {platform}
+                  </p>
+                ))}
+              </div>
+            </div>
 
-        <div className="flex-col">
-          <div className="max-w-[60ch]">
-            <MDXRemote
-              className={""}
-              {...mdxSource}
-              components={mdxComponents}
-            />
+            <div className="flex max-w-[60ch] flex-wrap gap-4">
+              <MDXRemote
+                className={""}
+                {...mdxSource}
+                components={mdxComponents}
+              />
+            </div>
           </div>
         </div>
 

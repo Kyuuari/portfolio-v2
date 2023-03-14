@@ -24,7 +24,7 @@ const ProjectGrid = ({ filteredData, projectMenu }: Props) => {
                   src={post.projectInfo.coverImage.url}
                   fill
                   loading="lazy"
-                  className="object-contain hover:opacity-75"
+                  className="object-contain hover:bg-primary-focus hover:opacity-75"
                   alt={post.id}
                 />
               </Link>

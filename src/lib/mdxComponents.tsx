@@ -15,7 +15,11 @@ const mdxComponents = (): MDXComponents => ({
     <p className="max-w-[60ch]">{children}</p>
   ),
   a: (props: React.HTMLProps<HTMLAnchorElement>) => (
-    <a href={props.href} title={props.title} className="text-red-600">
+    <a
+      href={props.href}
+      title={props.title}
+      className="rounded bg-neutral py-2 px-1 text-primary-content hover:opacity-30"
+    >
       {props.children}
     </a>
   ),
