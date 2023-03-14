@@ -12,9 +12,9 @@
     html {
         @apply scroll-smooth;
     }
-    section {
+    /* section {
         padding: 2rem;
-    }
+    } */
 
 .box {
     width: 150px;

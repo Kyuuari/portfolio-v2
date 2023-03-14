@@ -13,7 +13,7 @@ const MenuBar = () => {
         </label>
         <ul
           tabIndex={0}
-          className="dropdown-content menu rounded-box menu-compact w-52 bg-base-100"
+          className="dropdown-content menu rounded-box menu-compact w-52 bg-black"
         >
           <li>
             <Link href={"/#home"} scroll={false}>

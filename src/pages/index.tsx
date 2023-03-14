@@ -26,9 +26,12 @@ const Home: NextPage<HomeProps> = ({ data }) => {
 
       <main>
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <ProjectsSection data={data} />
+
+        <div className="p-8">
+          <AboutSection />
+          <ServicesSection />
+          <ProjectsSection data={data} />
+        </div>
       </main>
     </>
   );
@@ -46,8 +49,7 @@ export const getStaticProps: GetStaticProps = async () => {
             ... on ProjectInfo {
               id
               title
-              subtitle
-              images {
+              coverImage {
                 url
               }
             }
@@ -58,9 +60,8 @@ export const getStaticProps: GetStaticProps = async () => {
           projectInfo {
             ... on ProjectInfo {
               id
-              subtitle
               title
-              images {
+              coverImage {
                 url
               }
             }
@@ -71,11 +72,10 @@ export const getStaticProps: GetStaticProps = async () => {
           projectInfo {
             ... on ProjectInfo {
               id
-              images {
+              title
+              coverImage {
                 url
               }
-              title
-              subtitle
             }
           }
         }

@@ -11,6 +11,9 @@ const mdxComponents = (): MDXComponents => ({
   h3: ({ children }: React.HTMLProps<HTMLHeadingElement>) => (
     <h2 className="text-base font-bold">{children}</h2>
   ),
+  p: ({ children }: React.HTMLProps<HTMLHeadingElement>) => (
+    <p className="max-w-[60ch]">{children}</p>
+  ),
   a: (props: React.HTMLProps<HTMLAnchorElement>) => (
     <a href={props.href} title={props.title} className="text-red-600">
       {props.children}

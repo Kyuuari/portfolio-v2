@@ -8,8 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 // import { useMDXComponents } from "@mdx-js/react";
 import ProjectDetails from "../../components/ProjectDetails";
-import Layout from "../../components/Layout";
-import { useInView } from "framer-motion";
+// import { useInView } from "framer-motion";
 
 interface Props {
   projectInfo: ProjectInfo;
@@ -17,7 +16,7 @@ interface Props {
 }
 const DevPage = ({ projectInfo, mdxSource }: Props) => {
   return (
-    <section className="h-auto py-16">
+    <section className="w-screen">
       <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
     </section>
   );
@@ -51,13 +50,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           projectInfo {
             ... on ProjectInfo {
               id
-              slug
-              subtitle
               title
+              description
+              platforms
+              technologyUsed
+              coverImage {
+                url
+              }
               images {
                 url
               }
-              content
+              links
             }
           }
         }
@@ -65,7 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `,
     variables: { id },
   });
-  const postdata = data.developerPosts[0]?.projectInfo?.content;
+  const postdata = data.developerPosts[0]?.projectInfo?.links;
   const projectInfo = data.developerPosts[0]?.projectInfo;
   const mdxSource = await serialize(postdata ?? "");
   // console.log(mdxSource);

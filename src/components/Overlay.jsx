@@ -4,7 +4,7 @@ import { FaGithub, FaInstagram, FaBehance, FaLinkedin } from "react-icons/fa";
 
 export function Origin() {
   return (
-    <div className="absolute top-0 left-0 grow">
+    <div className="absolute top-0 left-0 grow ">
       <div className="font-bol fixed left-24 -bottom-8 origin-left rotate-90 whitespace-nowrap text-right text-base">
         {/* &nbsp;&nbsp;&nbsp;&nbsp; + ● ┓ */}
         <div className="grid gap-4">
@@ -71,7 +71,7 @@ export function Origin() {
 }
 export function Overlay() {
   return (
-    <div className="sticky z-[100]">
+    <div className="sticky z-[100] text-white mix-blend-difference">
       <Origin />
       <MenuBar />
     </div>

@@ -14,14 +14,14 @@ const ProjectGrid = ({ filteredData, projectMenu }: Props) => {
       {filteredData.length > 0 ? (
         <div className="grid grid-cols-1 gap-y-2 gap-x-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {filteredData.map((post) =>
-            post.projectInfo.images && post.projectInfo.images[0]?.url ? (
+            post.projectInfo.coverImage && post.projectInfo.coverImage?.url ? (
               <Link
                 key={post.id}
                 className=" relative block h-[250px] w-[250px] break-inside-avoid overflow-hidden"
                 href={`/${projectMenu}/${post.id}`}
               >
                 <Image
-                  src={post.projectInfo.images[0].url}
+                  src={post.projectInfo.coverImage.url}
                   fill
                   loading="lazy"
                   className="object-contain hover:opacity-75"

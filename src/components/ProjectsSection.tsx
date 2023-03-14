@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import client from "../lib/apolloClient";
-import { GetStaticProps } from "next";
-import { gql } from "@apollo/client";
-import Image from "next/image";
+// import { GetStaticProps } from "next";
+// import { gql } from "@apollo/client";
+// import Image from "next/image";
 import { PostData, ProjectData } from "../types/types";
-import Link from "next/link";
+// import Link from "next/link";
 import ProjectGrid from "./ProjectGrid";
 
 interface Props {
@@ -85,59 +85,56 @@ const ProjectsSection = ({ data }: Props) => {
 
 export default ProjectsSection;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data }: { data: ProjectData } = await client.query({
-    query: gql`
-      {
-        developerPosts {
-          id
-          projectInfo {
-            ... on ProjectInfo {
-              id
-              title
-              subtitle
-              slug
-              images {
-                url
-              }
-            }
-          }
-        }
-        caseStudies {
-          id
-          projectInfo {
-            ... on ProjectInfo {
-              id
-              slug
-              subtitle
-              title
-              images {
-                url
-              }
-            }
-          }
-        }
-        graphicDesigns {
-          id
-          projectInfo {
-            ... on ProjectInfo {
-              id
-              slug
-              images {
-                url
-              }
-              title
-              subtitle
-            }
-          }
-        }
-      }
-    `,
-  });
-  return {
-    props: {
-      data,
-    },
-    revalidate: 10,
-  };
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   const { data }: { data: ProjectData } = await client.query({
+//     query: gql`
+//       {
+//         developerPosts {
+//           id
+//           projectInfo {
+//             ... on ProjectInfo {
+//               id
+//               title
+//               subtitle
+//               images {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//         caseStudies {
+//           id
+//           projectInfo {
+//             ... on ProjectInfo {
+//               id
+//               subtitle
+//               title
+//               images {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//         graphicDesigns {
+//           id
+//           projectInfo {
+//             ... on ProjectInfo {
+//               id
+//               images {
+//                 url
+//               }
+//               title
+//               subtitle
+//             }
+//           }
+//         }
+//       }
+//     `,
+//   });
+//   return {
+//     props: {
+//       data,
+//     },
+//     revalidate: 10,
+//   };
+// };

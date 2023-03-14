@@ -4,10 +4,12 @@ export interface ImageData {
 export interface ProjectInfo {
   id: string;
   title: string;
-  subtitle: string;
-  slug: string;
+  coverImage: ImageData;
+  description: string;
   images: ImageData[];
-  content: string;
+  links: string;
+  platforms: string[];
+  technologyUsed: string[];
 }
 
 export interface PostData {

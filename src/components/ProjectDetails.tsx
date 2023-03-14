@@ -14,33 +14,83 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   mdxSource,
 }) => {
   const mdxComponents = useMDXComponents();
+  //   console.log(projectInfo.platforms);
 
   return (
-    <div className="grid justify-center">
-      <div className="">
-        <h1 className="text-5xl font-bold">{projectInfo.title}</h1>
-      </div>
+    <>
+      <section className="flex w-screen flex-col items-center justify-center">
+        <div className="flex flex-col sm:m-28 sm:flex-row">
+          <div className="sm:m-8">
+            <div className="relative aspect-square h-32 w-screen sm:h-56 sm:w-56">
+              <Image
+                src={projectInfo.coverImage.url ?? ""}
+                fill
+                className="object-cover sm:rounded-full"
+                alt={"Project Image"}
+              />
+            </div>
+          </div>
 
-      <div className="max-w-[60ch]">
-        <MDXRemote {...mdxSource} components={mdxComponents} />
-      </div>
+          <div className="m-8">
+            <>
+              <h1 className="text-5xl font-bold">{projectInfo.title}</h1>
+              <p className="max-w-[60ch]">{projectInfo.description}</p>
+            </>
+            <>
+              <h3 className="font-bold">Platforms</h3>
+              {projectInfo.platforms.map((platform, index) => (
+                <p key={index} className="">
+                  {platform}
+                </p>
+              ))}
+            </>
+            <>
+              <h3 className="font-bold">Technologies Used</h3>
+              {projectInfo.technologyUsed.map((platform, index) => (
+                <p key={index} className="">
+                  {platform}
+                </p>
+              ))}
+            </>
+          </div>
+        </div>
 
-      <div className="divider" />
-      <div className="carousel-center carousel rounded-box max-w-md  space-x-4 p-4">
-        {projectInfo.images.map((image, index) => (
-          <div key={index} className="carousel-item">
-            <Image
-              src={image.url ?? ""}
-              width={200}
-              height={200}
-              loading="lazy"
-              className="object-cover hover:opacity-75"
-              alt={"Project Image"}
+        <div className="flex-col">
+          <div className="max-w-[60ch]">
+            <MDXRemote
+              className={""}
+              {...mdxSource}
+              components={mdxComponents}
             />
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+
+        {/* <div className="rounded-box max-w-md">
+          {projectInfo?.images.map((image, index) => (
+            <div key={index} className="relative aspect-video h-[20em]">
+              <Image
+                src={image.url ?? ""}
+                fill
+                className="object-cover"
+                alt={"Project Image"}
+              />
+            </div>
+          ))}
+        </div> */}
+        <div className="grid w-screen place-content-center">
+          {projectInfo?.images.map((image, index) => (
+            <div key={index} className="relative aspect-video w-screen">
+              <Image
+                src={image.url ?? ""}
+                fill
+                className="object-contain"
+                alt={"Project Image"}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 

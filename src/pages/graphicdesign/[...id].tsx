@@ -70,13 +70,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           projectInfo {
             ... on ProjectInfo {
               id
-              slug
-              subtitle
               title
+              description
+              platforms
+              technologyUsed
+              coverImage {
+                url
+              }
               images {
                 url
               }
-              content
+              links
             }
           }
         }
@@ -84,7 +88,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `,
     variables: { id },
   });
-  const postdata = data.graphicDesigns[0]?.projectInfo?.content;
+  const postdata = data.graphicDesigns[0]?.projectInfo?.links;
   const projectInfo = data.graphicDesigns[0]?.projectInfo;
   const mdxSource = await serialize(postdata ?? "");
   // console.log(mdxSource);
