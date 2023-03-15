@@ -5,7 +5,7 @@ import { FaGithub, FaInstagram, FaBehance, FaLinkedin } from "react-icons/fa";
 export function Origin() {
   return (
     <div className="absolute top-0 left-0 grow ">
-      <div className="font-bol fixed left-24 -bottom-8 origin-left rotate-90 whitespace-nowrap text-right text-base">
+      <div className="fixed left-24 -bottom-8 origin-left rotate-90 whitespace-nowrap text-right text-base font-bold">
         {/* &nbsp;&nbsp;&nbsp;&nbsp; + ● ┓ */}
         <div className="grid gap-4">
           <a aria-label="Go to github" href="https://github.com/Kyuuari">
@@ -49,7 +49,7 @@ export function Origin() {
       </div>
 
       <p
-        className="font-bol fixed bottom-0 right-4 origin-right rotate-90 whitespace-nowrap text-right text-base"
+        className="fixed bottom-0 right-4 origin-right rotate-90 whitespace-nowrap text-right text-base font-semibold"
         // style={{
         //   transform: "rotate3d(0, 0, 1, 90deg) translate3d(100%,10px,0)",
         // }}

@@ -18,20 +18,18 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
 
   return (
     <>
-      <section className="place-content-center">
-        <div className="flex w-full flex-col sm:m-28 sm:flex-row">
-          <div className="sm:m-8">
-            <div className="min-h-32 relative aspect-square h-auto sm:h-56 sm:w-56">
-              <Image
-                src={projectInfo.coverImage.url ?? ""}
-                fill
-                className="object-cover sm:rounded-full"
-                alt={"Project Image"}
-              />
-            </div>
+      <section className="sm:py-16">
+        <div className="flex flex-col sm:flex-row sm:items-start  sm:justify-center">
+          <div className="min-h-32 relative aspect-square h-auto sm:h-56 sm:w-56">
+            <Image
+              src={projectInfo.coverImage.url ?? ""}
+              fill
+              className="object-cover sm:rounded-full"
+              alt={"Project Image"}
+            />
           </div>
 
-          <div className="m-8 grid gap-8">
+          <div className=" my-8 mx-8 flex flex-col flex-wrap gap-4">
             <>
               <h1 className="text-5xl font-bold">{projectInfo.title}</h1>
               <p className="max-w-[60ch]">{projectInfo.description}</p>

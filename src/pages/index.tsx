@@ -26,8 +26,7 @@ const Home: NextPage<HomeProps> = ({ data }) => {
 
       <main>
         <HeroSection />
-
-        <div className="px-10 py-16">
+        <div className="p-6">
           <AboutSection />
         </div>
 
