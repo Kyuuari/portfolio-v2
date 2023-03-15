@@ -18,10 +18,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
 
   return (
     <>
-      <section className="flex w-screen flex-col items-center justify-center">
-        <div className="flex flex-col sm:m-28 sm:flex-row">
+      <section className="place-content-center">
+        <div className="flex w-full flex-col sm:m-28 sm:flex-row">
           <div className="sm:m-8">
-            <div className="min-h-32 relative aspect-square w-screen sm:h-56 sm:w-56">
+            <div className="min-h-32 relative aspect-square h-auto sm:h-56 sm:w-56">
               <Image
                 src={projectInfo.coverImage.url ?? ""}
                 fill
@@ -79,9 +79,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
             </div>
           ))}
         </div> */}
-        <div className="grid w-screen place-content-center">
+        <div className="flex flex-col flex-wrap items-center gap-8">
           {projectInfo?.images.map((image, index) => (
-            <div key={index} className="relative aspect-video w-screen">
+            <div key={index} className="relative aspect-video w-full">
               <Image
                 src={image.url ?? ""}
                 fill

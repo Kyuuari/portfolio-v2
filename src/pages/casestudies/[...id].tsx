@@ -13,7 +13,7 @@ interface Props {
 }
 const CasePage = ({ projectInfo, mdxSource }: Props) => {
   return (
-    <section className="w-screen">
+    <section className="">
       {/* <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} /> */}
     </section>
   );

@@ -3,12 +3,9 @@ import React from "react";
 import { ProjectData, ProjectInfo } from "../../types/types";
 import client from "../../lib/apolloClient";
 import { gql } from "@apollo/client";
-// import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-// import { useMDXComponents } from "@mdx-js/react";
 import ProjectDetails from "../../components/ProjectDetails";
-// import { useInView } from "framer-motion";
 
 interface Props {
   projectInfo: ProjectInfo;
@@ -16,7 +13,7 @@ interface Props {
 }
 const DevPage = ({ projectInfo, mdxSource }: Props) => {
   return (
-    <section className="w-screen">
+    <section className="">
       <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
     </section>
   );
