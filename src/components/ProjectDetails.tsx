@@ -29,9 +29,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
             />
           </div>
 
-          <div className=" my-8 mx-8 flex flex-col flex-wrap gap-4">
+          <div className=" mx-8 mb-8 mt-8 flex flex-col flex-wrap gap-4 sm:mt-0">
             <>
-              <h1 className="text-5xl font-bold">{projectInfo.title}</h1>
+              <h1 className="max-w-[20ch] text-5xl font-bold">
+                {projectInfo.title}
+              </h1>
               <p className="max-w-[60ch]">{projectInfo.description}</p>
             </>
             <div>

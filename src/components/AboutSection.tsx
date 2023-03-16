@@ -5,7 +5,7 @@ const AboutSection = () => {
     <section id="about" className="h-auto">
       <div className="grid justify-center">
         <div className="">
-          <h1 className="text-lg font-bold">About Me 🌱</h1>
+          <h1 className="text-2xl font-bold">About Me 🌱</h1>
           {/* <h1 className="text-lg font-bold">Chester Cari</h1> */}
         </div>
 
@@ -13,14 +13,18 @@ const AboutSection = () => {
           Welcome to the page! I&apos;m Chester (@Kyuuari), and I&apos;m excited
           to share my passion for creativity and problem-solving with you.
         </p>
+        <br />
+        <h1 className="text-lg font-bold">Why ❔</h1>
         <p className="max-w-[60ch]">
-          I&apos;ve always been interested in design, and as a web developer,
-          I&apos;ve been able to combine my technical skills with my love of
+          Design has always been a passion of mine, and as a web developer,
+          I&apos;ve been able to merge my technical skills with my love for
           aesthetics.
         </p>
+        <br />
+        <h1 className="text-lg font-bold">How 🎯</h1>
         <p className="max-w-[60ch]">
-          On this page, you&apos;ll find a variety of projects that showcase my
-          work in:
+          Here, you&apos;ll find a diverse collection of projects that highlight
+          my work in:
         </p>
         <br />
         <ul className="list-inside list-disc">
