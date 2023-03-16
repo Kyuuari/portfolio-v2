@@ -1,13 +1,16 @@
-import { type NextPage } from "next";
+import { NextPage } from "next";
 import Head from "next/head";
 import { HeroSection } from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
-// import SkillsSection from "../components/SkillsSection";
 import ServicesSection from "../components/ServicesSection";
-// import ProjectsSection from "../components/ProjectsSection";
-import ProjectsSectionCS from "../components/ProjectsSectionCS";
+import ProjectsSection from "../components/ProjectsSection";
+import { HomeProps, ProjectData } from "../types/types";
+// import Layout from "../components/Layout";
+import { GetStaticProps } from "next";
+import client from "../lib/apolloClient";
+import { gql } from "@apollo/client";
 
-const Home: NextPage = () => {
+const Home: NextPage<HomeProps> = ({ data }) => {
   return (
     <>
       <Head>
@@ -18,28 +21,76 @@ const Home: NextPage = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Kyuuari Project" />
-        {/* <meta
-          property="og:description"
-          content="Chester Cari (@Kyuuari) - Exploring the intersection of design and technology with The Kyuuari Project, a collection of web applications, UI/UX, and digital art projects. This showcase combines my passion for design and technology into fun and creative works"
-        /> */}
-        {/* <meta property="og:image" content="https://example.com/image.jpg" />
-        <meta property="og:url" content="https://example.com" />
-        <meta property="og:site_name" content="Kyuuari Project" />
-        <meta property="og:locale" content="en_US" /> */}
-
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="absolute top-0 z-[-1] w-full">
+
+      <main>
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        {/* <SkillsSection /> */}
-        <ProjectsSectionCS />
-        <div className="h-5 py-5" />
-        {/* <div className="h-screen w-screen ">Hellow World 2</div> */}
+        <div className="p-6">
+          <AboutSection />
+        </div>
+
+        <div className="px-10 py-16">
+          <ServicesSection />
+        </div>
+
+        <div className="min-h-screen px-10">
+          <ProjectsSection data={data} />
+        </div>
       </main>
     </>
   );
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data }: { data: ProjectData } = await client.query({
+    query: gql`
+      {
+        developerPosts {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              title
+              coverImage {
+                url
+              }
+            }
+          }
+        }
+        caseStudies {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              title
+              coverImage {
+                url
+              }
+            }
+          }
+        }
+        graphicDesigns {
+          id
+          projectInfo {
+            ... on ProjectInfo {
+              id
+              title
+              coverImage {
+                url
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+  return {
+    props: {
+      data,
+    },
+    revalidate: 10,
+  };
+};

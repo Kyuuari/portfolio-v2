@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // type Props = {};
-const ThemeList = ["cmyk", "black"];
+const ThemeList = ["lofi", "black"];
 
 const ThemeToggler = () => {
   //get local theme
@@ -10,12 +10,11 @@ const ThemeToggler = () => {
 
   useEffect(() => {
     // Perform localStorage action
-    if (localStorage.getItem("theme") == "black") {
-      setdarkmode(true);
-    }
-
     if (localStorage.getItem("theme") == null) {
       localStorage.setItem("theme", "black");
+    }
+    if (localStorage.getItem("theme") == "black") {
+      setdarkmode(true);
     }
   }, []);
 
@@ -24,7 +23,7 @@ const ThemeToggler = () => {
   }
 
   return (
-    <label className="swap swap-rotate p-3">
+    <label className="swap-rotate swap p-3">
       <input
         type="checkbox"
         onChange={() => toggleDarkMode()}

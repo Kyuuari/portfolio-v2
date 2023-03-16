@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectsSectionCS = () => {
+const ComingSoon = () => {
   return (
     <section id="projects" className="h-auto">
       <div className="grid justify-center">
@@ -31,4 +31,4 @@ const ProjectsSectionCS = () => {
   );
 };
 
-export default ProjectsSectionCS;
+export default ComingSoon;

@@ -1,80 +1,140 @@
-import React from "react";
+import React, { useState } from "react";
+import client from "../lib/apolloClient";
+// import { GetStaticProps } from "next";
+// import { gql } from "@apollo/client";
+// import Image from "next/image";
+import { PostData, ProjectData } from "../types/types";
+// import Link from "next/link";
+import ProjectGrid from "./ProjectGrid";
 
-const ProjectsSection = () => {
+interface Props {
+  data: ProjectData;
+}
+
+const ProjectsSection = ({ data }: Props) => {
+  // console.log(data);
+  const [projectMenu, setprojectMenu] = useState("dev");
+  // console.log(projectMenu);
+
+  let filteredData: PostData[] = [];
+  if (projectMenu === "dev") {
+    filteredData = data.developerPosts;
+  } else if (projectMenu === "graphicdesign") {
+    filteredData = data.graphicDesigns;
+  } else if (projectMenu === "casestudies") {
+    filteredData = data.caseStudies;
+  }
+
   return (
-    <section className="h-auto w-screen">
-      {/* <h1 className="text-lg font-bold">Projects</h1>
-      <div className="place-items-center">
-        <div className="carousel rounded-box h-[600px] py-3">
-          <div className="carousel-item ">
-            <div className="card w-96 bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  className=""
-                  src="https://images.unsplash.com/photo-1676629131849-1039f0c96566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <button className="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item ">
-            <img
-              src="https://images.unsplash.com/photo-1676629131849-1039f0c96566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-full">
-            <div className="card w-96 bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  src="https://images.unsplash.com/photo-1676629131849-1039f0c96566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <button className="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item w-full">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-full">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-1/2">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
-          </div>
-          <div className="carousel-item w-1/2">
-            <img
-              src="https://images.unsplash.com/photo-1676386749756-1987d8a0e32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-              alt="Burger"
-            />
+    <section id="projects" className="h-auto">
+      <div className="grid justify-center">
+        <div className="place-items-center py-2">
+          {/* <div className="place-content-start"> */}
+          <h1 className="text-lg font-bold">Projects</h1>
+          <div className="place-items-center">
+            {/* <h1 className="text-2xl font-bold">Coming Soon</h1> */}
           </div>
         </div>
-      </div> */}
+      </div>
+
+      <div className="flex flex-wrap sm:justify-end">
+        <ul className="menu rounded-box menu-horizontal justify-center gap-4 bg-base-100 font-bold">
+          <li onClick={() => setprojectMenu("dev")}>
+            <a>Dev</a>
+          </li>
+          <li onClick={() => setprojectMenu("graphicdesign")}>
+            <a>Graphic Design</a>
+          </li>
+          <li onClick={() => setprojectMenu("casestudies")}>
+            <a>Case Studies</a>
+          </li>
+        </ul>
+
+        {/* <div className="tabs">
+          <a
+            className={`tab tab-lifted ${
+              projectMenu === "dev" ? "tab-active" : ""
+            }`}
+            onClick={() => setprojectMenu("dev")}
+          >
+            Dev
+          </a>
+          <a
+            className={`tab tab-lifted ${
+              projectMenu === "graphicdesign" ? "tab-active" : ""
+            }`}
+            onClick={() => setprojectMenu("graphicdesign")}
+          >
+            Graphic Design
+          </a>
+          <a
+            className={`tab tab-lifted ${
+              projectMenu === "casestudies" ? "tab-active" : ""
+            }`}
+            onClick={() => setprojectMenu("casestudies")}
+          >
+            Case Studies
+          </a>
+        </div> */}
+      </div>
+
+      <ProjectGrid filteredData={filteredData} projectMenu={projectMenu} />
     </section>
   );
 };
 
 export default ProjectsSection;
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const { data }: { data: ProjectData } = await client.query({
+//     query: gql`
+//       {
+//         developerPosts {
+//           id
+//           projectInfo {
+//             ... on ProjectInfo {
+//               id
+//               title
+//               subtitle
+//               images {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//         caseStudies {
+//           id
+//           projectInfo {
+//             ... on ProjectInfo {
+//               id
+//               subtitle
+//               title
+//               images {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//         graphicDesigns {
+//           id
+//           projectInfo {
+//             ... on ProjectInfo {
+//               id
+//               images {
+//                 url
+//               }
+//               title
+//               subtitle
+//             }
+//           }
+//         }
+//       }
+//     `,
+//   });
+//   return {
+//     props: {
+//       data,
+//     },
+//     revalidate: 10,
+//   };
+// };

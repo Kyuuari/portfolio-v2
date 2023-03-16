@@ -6,27 +6,27 @@ import Link from "next/link";
 
 const MenuBar = () => {
   return (
-    <div className="navbar fixed w-screen bg-opacity-0">
+    <div className="navbar fixed w-screen">
       <div className="dropdown-hover dropdown navbar-start">
         <label tabIndex={0} className="btn-ghost btn normal-case">
           Menu
         </label>
         <ul
           tabIndex={0}
-          className="dropdown-content menu rounded-box menu-compact w-52 bg-base-100 p-2 shadow"
+          className="dropdown-content menu rounded-box menu-compact w-52 bg-white bg-opacity-20"
         >
           <li>
-            <Link href={"#home"} scroll={false}>
+            <Link href={"/#home"} scroll={false}>
               Home
             </Link>
           </li>
           <li>
-            <Link href={"#about"} scroll={false}>
+            <Link href={"/#about"} scroll={false}>
               About
             </Link>
           </li>
           <li>
-            <Link href={"#projects"} scroll={false}>
+            <Link href={"/#projects"} scroll={false}>
               Projects
             </Link>
           </li>
@@ -38,49 +38,4 @@ const MenuBar = () => {
     </div>
   );
 };
-
-// const MenuBar2 = () => {
-//   return (
-//     <div className="navbar w-screen bg-opacity-0">
-//       <div className="flex-1">
-//         <a className="btn-ghost btn normal-case">Chester Cari 🍜</a>
-//       </div>
-
-//       <div className="dropdown">
-//         <label tabIndex={0} className="btn-ghost btn lg:hidden">
-//           <svg
-//             xmlns="http://www.w3.org/2000/svg"
-//             className="h-5 w-5"
-//             fill="none"
-//             viewBox="0 0 24 24"
-//             stroke="currentColor"
-//           >
-//             <path
-//               strokeLinecap="round"
-//               strokeLinejoin="round"
-//               strokeWidth="2"
-//               d="M4 6h16M4 12h8m-8 6h16"
-//             />
-//           </svg>
-//         </label>
-//         <ul
-//           tabIndex={0}
-//           className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
-//         >
-//           <li>
-//             <a>Item 1</a>
-//           </li>
-//           <li>
-//             <a>Item 3</a>
-//           </li>
-//         </ul>
-//       </div>
-
-//       <div className="flex-none">
-//         <ThemeToggler />
-//       </div>
-//     </div>
-//   );
-// };
-
 export default MenuBar;
