@@ -59,7 +59,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
             </div>
 
             <div className="flex max-w-[60ch] flex-wrap gap-4">
-              {mdxComponents != null ? (
+              {mdxSource != null ? (
                 <MDXRemote
                   className={""}
                   {...mdxSource}
