@@ -34,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.developerPosts.map((post) => ({
     params: { id: [post.id] },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
