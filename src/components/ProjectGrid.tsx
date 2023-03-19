@@ -1,11 +1,16 @@
 import React from "react";
-import Image from "next/image";
+import { ImageProps } from "next/image";
 import Link from "next/link";
 import { PostData } from "../types/types";
+import { BlurImage } from "./BlurImage";
 
 interface Props {
   filteredData: PostData[];
   projectMenu: string;
+}
+
+export interface BlurImageProps extends ImageProps {
+  alt: string;
 }
 
 const ProjectGrid = ({ filteredData, projectMenu }: Props) => {
@@ -20,7 +25,7 @@ const ProjectGrid = ({ filteredData, projectMenu }: Props) => {
                 className=" relative block h-[250px] w-[250px] break-inside-avoid overflow-hidden"
                 href={`/${projectMenu}/${post.id}`}
               >
-                <Image
+                <BlurImage
                   src={post.projectInfo.coverImage.url}
                   fill
                   loading="lazy"
