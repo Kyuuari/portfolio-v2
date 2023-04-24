@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-// type Props = {};
 const ThemeList = ["lofi", "black"];
 
 const ThemeToggler = () => {

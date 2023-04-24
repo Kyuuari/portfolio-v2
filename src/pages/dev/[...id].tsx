@@ -1,11 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { ProjectData, ProjectInfo } from "../../types/types";
-import client from "../../lib/apolloClient";
+import client from "../../apollo/apolloClient";
 import { gql } from "@apollo/client";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import ProjectDetails from "../../components/ProjectDetails";
+const ProjectDetails = lazy(() => import("../../components/project-details"));
 
 interface Props {
   projectInfo: ProjectInfo;
@@ -13,9 +13,9 @@ interface Props {
 }
 const DevPage = ({ projectInfo, mdxSource }: Props) => {
   return (
-    <section className="">
+    <Suspense fallback={<div>Loading...</div>}>
       <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
-    </section>
+    </Suspense>
   );
 };
 
@@ -68,7 +68,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postdata = data.developerPosts[0]?.projectInfo?.links;
   const projectInfo = data.developerPosts[0]?.projectInfo;
   const mdxSource = await serialize(postdata ?? "");
-  // console.log(mdxSource);
   return {
     props: {
       projectInfo,

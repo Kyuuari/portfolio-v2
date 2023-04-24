@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { ImageProps } from "next/image";
 import Link from "next/link";
 import { PostData } from "../types/types";
-import { BlurImage } from "./BlurImage";
+import { BlurImage } from "./blur-image";
 
 interface Props {
   filteredData: PostData[];
@@ -18,23 +18,26 @@ const ProjectGrid = ({ filteredData, projectMenu }: Props) => {
     <div className="mx-auto grid min-h-[75vh] max-w-2xl place-items-center py-8 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
       {filteredData.length > 0 ? (
         <div className="grid grid-cols-1 gap-y-2 gap-x-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {filteredData.map((post) =>
-            post.projectInfo.coverImage && post.projectInfo.coverImage?.url ? (
-              <Link
-                key={post.id}
-                className=" relative block h-[250px] w-[250px] break-inside-avoid overflow-hidden"
-                href={`/${projectMenu}/${post.id}`}
-              >
-                <BlurImage
-                  src={post.projectInfo.coverImage.url}
-                  fill
-                  loading="lazy"
-                  className="object-contain hover:bg-primary-focus hover:opacity-75"
-                  alt={post.id}
-                />
-              </Link>
-            ) : null
-          )}
+          <Suspense fallback={<>Loading...</>}>
+            {filteredData.map((post) =>
+              post.projectInfo.coverImage &&
+              post.projectInfo.coverImage?.url ? (
+                <Link
+                  key={post.id}
+                  className=" relative block h-[250px] w-[250px] break-inside-avoid overflow-hidden"
+                  href={`/${projectMenu}/${post.id}`}
+                >
+                  <BlurImage
+                    src={post.projectInfo.coverImage.url}
+                    fill
+                    loading="lazy"
+                    className="object-contain hover:bg-primary-focus hover:opacity-75"
+                    alt={post.id}
+                  />
+                </Link>
+              ) : null
+            )}
+          </Suspense>
         </div>
       ) : (
         <div className="grid place-items-center text-center">

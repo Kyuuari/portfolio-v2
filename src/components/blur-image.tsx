@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import cn from "clsx";
-import { BlurImageProps } from "./ProjectGrid";
+import { BlurImageProps } from "./project-grid";
 
 export function BlurImage(props: BlurImageProps): JSX.Element {
   const [isLoading, setLoading] = useState(true);
