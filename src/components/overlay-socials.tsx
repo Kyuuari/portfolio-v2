@@ -1,5 +1,5 @@
 // import { Html } from "@react-three/drei";
-import MenuBar from "./MenuBar";
+import MenuBar from "./menu-bar";
 import { FaGithub, FaInstagram, FaBehance, FaLinkedin } from "react-icons/fa";
 
 export function Origin() {
@@ -44,16 +44,10 @@ export function Origin() {
               className="-rotate-90 hover:text-primary-focus"
             />
           </a>
-          {/* <FaLinkedin className="-rotate-90" /> */}
         </div>
       </div>
 
-      <p
-        className="fixed bottom-0 right-4 origin-right rotate-90 whitespace-nowrap text-right text-base font-semibold"
-        // style={{
-        //   transform: "rotate3d(0, 0, 1, 90deg) translate3d(100%,10px,0)",
-        // }}
-      >
+      <p className="fixed bottom-0 right-4 origin-right rotate-90 whitespace-nowrap text-right text-base font-semibold">
         Chester Cari &nbsp;&nbsp;&nbsp; ┓
       </p>
       <div

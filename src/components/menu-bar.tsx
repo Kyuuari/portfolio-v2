@@ -1,8 +1,6 @@
 import React from "react";
-import ThemeToggler from "./ThemeToggler";
+import ThemeToggler from "./theme-toggler";
 import Link from "next/link";
-
-// type Props = {};
 
 const MenuBar = () => {
   return (

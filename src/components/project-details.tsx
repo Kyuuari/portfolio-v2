@@ -1,9 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote";
 import { useMDXComponents } from "@mdx-js/react";
 import { ProjectInfo } from "../types/types";
-import { BlurImage } from "./BlurImage";
+import { BlurImage } from "./blur-image";
 
 interface ProjectDetailsProps {
   projectInfo: ProjectInfo;
@@ -15,7 +14,6 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   mdxSource,
 }) => {
   const mdxComponents = useMDXComponents();
-  //   console.log(projectInfo.platforms);
 
   return (
     <>
@@ -72,18 +70,6 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
           </div>
         </div>
 
-        {/* <div className="rounded-box max-w-md">
-          {projectInfo?.images.map((image, index) => (
-            <div key={index} className="relative aspect-video h-[20em]">
-              <Image
-                src={image.url ?? ""}
-                fill
-                className="object-cover"
-                alt={"Project Image"}
-              />
-            </div>
-          ))}
-        </div> */}
         <div className="flex flex-col flex-wrap items-center gap-8">
           {projectInfo?.images.map((image, index) => (
             <div key={index} className="relative aspect-video w-full">

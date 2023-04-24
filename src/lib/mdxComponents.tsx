@@ -33,7 +33,6 @@ const mdxComponents = (): MDXComponents => ({
       </pre>
     </div>
   ),
-  // li: ({ children }: React.HTMLProps<HTMLUListElement>) => <li>{children}</li>,
 });
 
 export default mdxComponents;

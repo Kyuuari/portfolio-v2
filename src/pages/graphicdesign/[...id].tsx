@@ -1,44 +1,21 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { ProjectData, ProjectInfo } from "../../types/types";
-import client from "../../lib/apolloClient";
+import client from "../../apollo/apolloClient";
 import { gql } from "@apollo/client";
-// import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-// import { useMDXComponents } from "@mdx-js/react";
-import ProjectDetails from "../../components/ProjectDetails";
+const ProjectDetails = lazy(() => import("../../components/project-details"));
 
 interface Props {
   projectInfo: ProjectInfo;
   mdxSource: MDXRemoteSerializeResult;
 }
 const GraphicsPage = ({ projectInfo, mdxSource }: Props) => {
-  // const mdxComponents = useMDXComponents();
   return (
-    <section className="">
+    <Suspense fallback={<div>Loading...</div>}>
       <ProjectDetails projectInfo={projectInfo} mdxSource={mdxSource} />
-      {/* <div className="grid justify-center">
-        <div className="">
-          <h1 className="text-lg font-bold">{projectInfo.title}</h1>
-          <h2 className="font-bold">{projectInfo.subtitle}</h2>
-        </div>
-        <div>
-          <Image
-            src={projectInfo.images[0]?.url ?? ""}
-            width={200}
-            height={200}
-            loading="lazy"
-            className="hover:opacity-75"
-            alt={"Project Image"}
-          />
-        </div>
-
-        <div className="wrapper max-w-[60ch]">
-          <MDXRemote {...mdxSource} components={mdxComponents} />
-        </div>
-      </div> */}
-    </section>
+    </Suspense>
   );
 };
 
@@ -91,7 +68,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postdata = data.graphicDesigns[0]?.projectInfo?.links;
   const projectInfo = data.graphicDesigns[0]?.projectInfo;
   const mdxSource = await serialize(postdata ?? "");
-  // console.log(mdxSource);
   return {
     props: {
       projectInfo,
